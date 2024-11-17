@@ -58,6 +58,9 @@ class ListaTarefas extends Component
         ]);
         $this->cancelEdit();
     }
+    public function delete($tarefaId){
+        Tarefa::findOrFail($tarefaId)->delete();
+    }
 
     public function render()
     {

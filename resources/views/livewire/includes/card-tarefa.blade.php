@@ -23,7 +23,8 @@
         <button wire:click="edit({{$tarefa->id}})">
             <ion-icon title="Editar registro" name="create-outline"></ion-icon>
         </button>
-        <ion-icon title="Apagar registro" name="trash-outline"></ion-icon>
-
+        <button wire:click="delete({{$tarefa->id}})" wire:confirm="Tem certeza que quer excluir essa tarefa?">
+            <ion-icon title="Apagar registro" name="trash-outline"></ion-icon>
+        </button>
     </div>
 </div>
