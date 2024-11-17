@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome')->unique();
             $table->double('custo',11,2);
             $table->date('data_limite');
             $table->unsignedInteger('ordem_apresentacao')->unique();         
