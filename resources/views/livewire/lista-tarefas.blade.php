@@ -1,4 +1,7 @@
 <div>
     <h2>Minhas Tarefas</h2>
-    {{-- Stop trying to control. --}}
+    @for($i = 0; $i < 3; $i++)
+        @include('livewire/includes/card-tarefa')
+    @endfor
+    @include('livewire/includes/adicionar-tarefa')
 </div>
