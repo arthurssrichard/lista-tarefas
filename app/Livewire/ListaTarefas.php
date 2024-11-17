@@ -62,9 +62,48 @@ class ListaTarefas extends Component
         Tarefa::findOrFail($tarefaId)->delete();
     }
 
+    public function cardUp($tarefaId){
+        $current = Tarefa::findOrFail($tarefaId);
+        if ($current->ordem_apresentacao <= 1) {
+            return;
+        }
+        $tarefaAcima = Tarefa::where('ordem_apresentacao', '=', $current->ordem_apresentacao - 1)->first();
+        if ($tarefaAcima) {
+            $tarefaAcima->update([
+                'ordem_apresentacao' => 0,
+            ]);
+            $current->update([
+                'ordem_apresentacao' => $current->ordem_apresentacao - 1,
+            ]);
+            $tarefaAcima->update([
+                'ordem_apresentacao' => $current->ordem_apresentacao + 1,
+            ]);
+        }
+    }
+
+    public function cardDown($tarefaId){
+        $current = Tarefa::findOrFail($tarefaId);
+        if ($current->ordem_apresentacao >= Tarefa::max('ordem_apresentacao')) {
+            return;
+        }
+        $tarefaAbaixo = Tarefa::where('ordem_apresentacao', '=', $current->ordem_apresentacao + 1)->first();
+        if ($tarefaAbaixo) {
+            $tarefaAbaixo->update([
+                'ordem_apresentacao' => 0,
+            ]);
+            $current->update([
+                'ordem_apresentacao' => $current->ordem_apresentacao + 1,
+            ]);
+            $tarefaAbaixo->update([
+                'ordem_apresentacao' => $current->ordem_apresentacao - 1,
+            ]);
+        }
+    }
+   
+
     public function render()
     {
-        $tarefas = Tarefa::all();
+        $tarefas = Tarefa::orderBy('ordem_apresentacao','asc')->get();
         return view('livewire.lista-tarefas',['tarefas'=>$tarefas]);
     }
 }
