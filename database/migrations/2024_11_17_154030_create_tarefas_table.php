@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome')->unique();
             $table->double('custo',11,2);
             $table->date('data_limite');
-            $table->unsignedInteger('ordem_apresentacao')->unique();         
+            $table->integer('ordem_apresentacao')->unique();         
             $table->timestamps();
         });
     }

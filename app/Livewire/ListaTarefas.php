@@ -99,7 +99,27 @@ class ListaTarefas extends Component
             ]);
         }
     }
-   
+
+    public function updateOrder($orders)
+    {
+        foreach ($orders as $index => $order) {
+            $tarefa = Tarefa::find($order['value']);
+            if ($tarefa) {
+                $tarefa->update(['ordem_apresentacao' => -($index + 1)]);
+            }
+        }
+    
+        foreach ($orders as $order) {
+            $tarefa = Tarefa::find($order['value']);
+            if ($tarefa) {
+                $tarefa->update(['ordem_apresentacao' => $order['order']]);
+            }
+        }
+    }
+    
+    
+    
+    
 
     public function render()
     {

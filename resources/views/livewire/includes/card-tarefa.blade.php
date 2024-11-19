@@ -1,4 +1,4 @@
-<div class="bg-light mt-1 p-2 row d-flex justify-content-between" wire:key="{{$tarefa->id}}">
+<li class="bg-light mt-1 p-2 row d-flex justify-content-between" wire:key="{{$tarefa->id}}" wire:sortable.item="{{$tarefa->id}}">
     <div class="col-6">
         @if($this->editingTarefaId == $tarefa->id)
         <div class="form-container">
@@ -35,4 +35,4 @@
         <button wire:click="cardDown({{$tarefa->id}})"><ion-icon name="caret-down-circle-outline"></ion-icon></button>
         @endif
     </div>
-</div>
+</li>
