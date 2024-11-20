@@ -1,6 +1,5 @@
 <div class="col-10 bg-light p-3 border border-dark rounded">
     <h2>Incluir nova tarefa</h2>
-    @if(!$editingTarefaId)
     <form>
         <div>
             <div class="form-container">
@@ -14,10 +13,9 @@
             </div>
             <div class="form-container">
                 <label for="data-limite">Data Limite:</label>
-                <input type="date" id="data-limite" wire:model="dataLimite" class="card-data form-control mb-2">
+                <input type="date" id="data-limite" wire:model="dataLimite" class="card-data form-control mb-2" placeholder="dd-mm-yyyy">
             </div>
         </div>
-        <button type="submit" wire:click.prevent="create()" class="btn btn-success p-1">Adicionar</button>
-        @endif
+        <button type="submit" wire:click.prevent="create()" class="btn btn-success p-1">Incluir</button>
     </form>
 </div>

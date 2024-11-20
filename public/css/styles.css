@@ -25,9 +25,6 @@ ul{
 .drag-card{
     color: rgb(167, 167, 167);
     transition: .1s;
-    &:hover{
-        color: #131313;
-    }
 }
 .form-control, .card-nome, .card-custo, .card-data{
     padding: .1em .1em .1em .3em !important;
@@ -47,15 +44,8 @@ ul{
     box-shadow: 0px 2px 5px rgba(0,0,0,10%);
     background-color: #f8f9fa;  /* bg-light */
 }
-.utils{
-    opacity: 0;
-    transition: 0.1s;
-    transform: translateX(-10px);
-}
-.tarefa:hover .utils{
-    opacity: 1;
-    transform: translateX(0);
-}
+
+
 
 .tarefa{
     & .tempo-restante{
@@ -67,14 +57,33 @@ ul{
     & .tempo-restante{
         opacity: 1;
     }
+    & .drag-card{
+        color: #131313;
+    }
 }
-
+.utils{
+    opacity: 0.4;
+    transition: 0.1s;
+    transform: translateX(0px);
+}
+.tarefa:hover .utils{
+    opacity: 1;
+    transform: translateX(0);
+}
 .editBtn > ion-icon{
-    color: rgb(0, 0, 20);
+    background-color: rgb(255, 136, 0);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.4em;
+    padding: 5px !important;
 }
 
 .deleteBtn > ion-icon{
-    color: rgb(182, 14, 14);
+    background-color: rgb(223, 10, 10);
+    color: white;
+    font-size: 1.4em;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .btn, .btn-danger, .btn-success{

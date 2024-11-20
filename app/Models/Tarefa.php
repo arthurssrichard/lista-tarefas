@@ -16,7 +16,7 @@ class Tarefa extends Model
     ];
 
     public function getDataLimiteFormatadaAttribute(){
-        return Carbon::parse($this->data_limite)->format('m/d/Y');
+        return Carbon::parse($this->data_limite)->format('d/m/Y');
     }
     public function getDiasRestantesAttribute(){
         return Carbon::parse($this->data_limite)->diffForHumans();
