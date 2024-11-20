@@ -42,7 +42,12 @@ class ListaTarefas extends Component
     }
 
     public function cancelEdit(){
-        $this->reset('editingTarefaId');
+        $this->reset([
+            'nome',
+            'custo',
+            'dataLimite',
+            'editingTarefaId'
+        ]);
     }
     public function update(){
         $this->validate([

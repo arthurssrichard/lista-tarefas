@@ -5,5 +5,7 @@
         @include('livewire/includes/card-tarefa')
     @endforeach
     </ul>
-    @include('livewire/includes/adicionar-tarefa')
+    @if(!$editingTarefaId)
+        @include('livewire/includes/adicionar-tarefa')
+    @endif
 </section>

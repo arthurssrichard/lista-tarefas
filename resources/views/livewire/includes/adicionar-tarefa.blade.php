@@ -1,5 +1,6 @@
 <div class="col-10 bg-light p-3 border border-dark rounded">
     <h2>Incluir nova tarefa</h2>
+    @if(!$editingTarefaId)
     <form>
         <div>
             <div class="form-container">
@@ -8,6 +9,7 @@
             </div>
             <div class="form-container">
                 <label for="custo">Custo:</label>
+
                 <input id="custo" type="number" min="0" step="0.01" wire:model="custo" placeholder="Custo" class="card-custo form-control mb-1">
             </div>
             <div class="form-container">
@@ -16,5 +18,6 @@
             </div>
         </div>
         <button type="submit" wire:click.prevent="create()" class="btn btn-success p-1">Adicionar</button>
+        @endif
     </form>
 </div>
