@@ -35,7 +35,7 @@ ul{
     padding: 0.3rem;            /* p-2 */
     display: flex;              /* d-flex */
     flex-direction: row;        /* row */
-    height: 11rem;
+    min-height: 11rem;
     width: 100%;
 }
 .tarefa-card{

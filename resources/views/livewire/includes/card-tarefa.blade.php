@@ -2,14 +2,23 @@
     <div class="tarefa-card col-10 d-flex justify-content-between {{$tarefa->custo > 1000 ? 'bg-warning':''}}">{{-- preenchimento do card --}}
         <div class="col-8">
             @if($this->editingTarefaId == $tarefa->id)
-            <div class="form-container">
-                <input type="text" id="nome" wire:model="nome" placeholder="Nome" class="card-nome form-control mb-1">
+            <div class="form-container mb-1">
+                <input type="text" id="nome" wire:model="editNome" placeholder="Nome" class="card-nome form-control @error('nome') is-invalid @enderror">
+                @error('editNome')
+                    <small class="text-danger ">{!!$message!!}</small>
+                @enderror
             </div>
-            <div class="form-container">
-                <input id="custo" type="number" min="0" step="0.01" wire:model="custo" placeholder="Custo" class="card-custo form-control mb-1">
+            <div class="form-container mb-1">
+                <input id="custo" type="number" min="0" step="0.01" wire:model="editCusto" placeholder="Custo" class="card-custo form-control @error('custo') is-invalid @enderror">
+                @error('editCusto')
+                    <small class="text-danger ">{!!$message!!}</small>
+                @enderror
             </div>
-            <div class="form-container">
-                <input type="date" id="data-limite" wire:model="dataLimite" class="card-data form-control mb-2">
+            <div class="form-container mb-2">
+                <input type="date" id="data-limite" wire:model="editDataLimite" class="card-data form-control @error('dataLimite') is-invalid @enderror">
+                @error('editDataLimite')
+                    <small class="text-danger ">{!!$message!!}</small>
+                @enderror
             </div>
             <button class="btn btn-success" wire:click="update()">Atualizar</button>
             <button class="btn btn-danger" wire:click="cancelEdit()">Cancelar</button>
@@ -22,16 +31,19 @@
         @if(!$this->editingTarefaId)
         <div class="col-1 d-flex flex-column justify-content-around">
             <button class="drag-card"><ion-icon title="Arrastar" wire:ignore wire:sortable.handle name="menu-outline"></ion-icon></button>
-            @if($tarefa->ordem_apresentacao > 1)
+
+            @if($tarefa->ordem_apresentacao != $tarefas->min('ordem_apresentacao'))
             <button class="toggle-order toggle-order-active" wire:click="cardUp({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @else
             <button class="toggle-order" style="cursor: default;"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @endif
-            @if($tarefa->ordem_apresentacao < $tarefas->max('ordem_apresentacao'))
+
+            @if($tarefa->ordem_apresentacao != $tarefas->max('ordem_apresentacao'))
             <button class="toggle-order toggle-order-active" wire:click="cardDown({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-down-outline"></ion-icon></button>
             @else
             <button class="toggle-order" style="cursor: default;"><ion-icon wire:ignore name="chevron-down-outline"></ion-icon></button>
             @endif
+
         </div>
         @endif
     </div>

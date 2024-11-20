@@ -5,26 +5,42 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Tarefa;
 use Livewire\Attributes\Rule;
+use PhpParser\Node\Stmt\TryCatch;
+use Exception;
 
 class ListaTarefas extends Component
 {
-    #[Rule('required|unique:tarefas|min:2|max:50')]
+    //#[Rule('required|unique:tarefas|min:2|max:50')]
     public $nome;
-    #[Rule('required|numeric|gte:0')]
+    //#[Rule('required|numeric|gte:0')]
     public $custo;
-    #[Rule('required|date|after:today')]
+    //#[Rule('required|date|after:today')]
     public $dataLimite;
+
+    //#[Rule('required|unique:tarefas|min:2|max:50')]
+    public $editNome;
+    //#[Rule('required|numeric|gte:0')]
+    public $editCusto;
+    //#[Rule('required|date|after:today')]
+    public $editDataLimite;
 
     public $editingTarefaId;
 
     public function create(){
-        $this->validate();
+        //dd("$this->nome $this->custo $this->dataLimite");
+        $this->validate([
+            'nome' => 'required|unique:tarefas|min:2|max:50|unique:tarefas', 
+            'custo' => 'required|numeric|gte:0',
+            'dataLimite' => 'required|date|after:today'
+        ]);
         Tarefa::create([
             'nome' => $this->nome,
             'custo' => $this->custo,
             'data_limite'=> $this->dataLimite,
             'ordem_apresentacao' => (Tarefa::max('ordem_apresentacao')+1)
         ]);
+        //session()->flash('success','Tarefa incluída');
+        flash()->success('Tarefa incluída!');
         $this->reset([
             'nome',
             'custo',
@@ -33,15 +49,49 @@ class ListaTarefas extends Component
     }
 
     public function edit($tarefaId){
+        $this->cancelEdit();
         $this->editingTarefaId = $tarefaId;
         $editingTarefa = Tarefa::findOrFail($tarefaId);
 
-        $this->nome = $editingTarefa->nome;
-        $this->custo = $editingTarefa->custo;
-        $this->dataLimite = $editingTarefa->data_limite;
+        $this->editNome = $editingTarefa->nome;
+        $this->editCusto = $editingTarefa->custo;
+        $this->editDataLimite = $editingTarefa->data_limite;
+    }
+    public function messages(): array
+    {
+        $nome = [
+            'required' => 'O campo "<strong>Nome</strong>" é obrigatório',
+            'unique' => 'O campo "<strong>Nome</strong>" não pode ser repetido',
+            'min' => 'O campo "<strong>Nome</strong>" deve ter entr 2 e 50 caracteres'
+        ];
+        $custo =[   
+            'required' => 'O campo "<strong>Custo</strong>" é obrigatório',
+            'numeric' => 'O campo "<strong>Custo</strong>" deve ser numérico',
+            'gte' => 'O campo "<strong>Custo</strong>" deves ser positivo'
+        ];
+        $dataLimite = [
+            'required' => 'O campo "<strong>Data Limite</strong>" é obrigatório',
+            'date' => 'O campo "<strong>Data Limite</strong>" deve ser uma data',
+            'after' => 'A "<strong>Data Limite</strong>" deve ser posterior o dia atual'
+        ];
+
+        return [
+            'nome.required' => $nome['required'], 'editNome.required' => $nome['required'],
+            'nome.unique' => $nome['unique'], 'editNome.unique' => $nome['unique'],
+            'nome.min' => $nome['min'], 'editNome.min' => $nome['min'],
+            //
+            'custo.required' => $custo['required'], 'editCusto.required' => $custo['required'],
+            'custo.numeric' => $custo['numeric'], 'editCusto.numeric' => $custo['numeric'],
+            'custo.gte' => $custo['gte'], 'editCusto.gte' => $custo['gte'],
+            //
+            'dataLimite.required' => $dataLimite['required'], 'editDataLimite.required'=>$dataLimite['required'],
+            'dataLimite.date' => $dataLimite['date'], 'editDataLimite.date'=>$dataLimite['date'],
+            'dataLimite.after' => $dataLimite['after'], 'editDataLimite.after'=>$dataLimite['after']
+        ];
     }
 
     public function cancelEdit(){
+        $this->resetErrorBag();
         $this->reset([
             'nome',
             'custo',
@@ -51,20 +101,27 @@ class ListaTarefas extends Component
     }
     public function update(){
         $this->validate([
-            'nome'=>'required|min:2|max:50|unique:tarefas,nome,'.$this->editingTarefaId,
-            'custo'=>'required|numeric|gte:0',
-            'dataLimite'=>'required|date|after:today'
+            'editNome'=>'required|min:2|max:50|unique:tarefas,nome,'.$this->editingTarefaId,
+            'editCusto'=>'required|numeric|gte:0',
+            'editDataLimite'=>'required|date|after:today'
         ]);
         $tarefaAntiga = Tarefa::findOrFail($this->editingTarefaId);
         $tarefaAntiga->update([
-            'nome' => $this->nome,
-            'custo' => $this->custo,
-            'data_limite'=> $this->dataLimite
+            'nome' => $this->editNome,
+            'custo' => $this->editCusto,
+            'data_limite'=> $this->editDataLimite
         ]);
         $this->cancelEdit();
     }
     public function delete($tarefaId){
-        Tarefa::findOrFail($tarefaId)->delete();
+        try{
+            Tarefa::findOrFail($tarefaId)->delete();
+        }catch(Exception $e){
+            //session()->flash('error','Erro ao deletar tarefa');
+            flash()->error('Erro ao deletar tarefa!');
+            return;
+        }
+
     }
 
     public function cardUp($tarefaId){
