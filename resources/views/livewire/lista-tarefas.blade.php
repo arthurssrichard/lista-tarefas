@@ -1,4 +1,4 @@
-<section class="col-6">
+<section class="col-11 col-sm-6">
     @if(session('error'))
     <div class="alert alert-danger alert-dismissible d-flex flex-column fade show" role="alert">
         <div>
