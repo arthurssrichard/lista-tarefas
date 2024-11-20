@@ -117,10 +117,6 @@ class ListaTarefas extends Component
         }
     }
     
-    
-    
-    
-
     public function render()
     {
         $tarefas = Tarefa::orderBy('ordem_apresentacao','asc')->get();

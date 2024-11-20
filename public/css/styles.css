@@ -1,0 +1,83 @@
+ul{
+    padding: 0;
+}
+.card-nome{
+    font-size: 1.5em;
+}
+.card-custo, .card-data{
+    font-size: 1em;
+}
+.toggle-order, .editBtn, .deleteBtn, .drag-card{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.toggle-order{
+    color: rgb(167, 167, 167);
+    &.toggle-order-active{
+        color: #131313;
+    }
+}
+.drag-card{
+    color: rgb(167, 167, 167);
+    transition: .1s;
+    &:hover{
+        color: #131313;
+    }
+}
+.form-control, .card-nome, .card-custo, .card-data{
+    padding: .1em .1em .1em .3em !important;
+}
+
+.tarefa{
+    margin-top: 0.25rem;        /* mt-1 */
+    padding: 0.3rem;            /* p-2 */
+    display: flex;              /* d-flex */
+    flex-direction: row;        /* row */
+    height: 11rem;
+    width: 100%;
+}
+.tarefa-card{
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 0.35rem;     /* rounded */
+    box-shadow: 0px 2px 5px rgba(0,0,0,10%);
+    background-color: #f8f9fa;  /* bg-light */
+}
+.utils{
+    opacity: 0;
+    transition: 0.1s;
+    transform: translateX(-10px);
+}
+.tarefa:hover .utils{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tarefa{
+    & .tempo-restante{
+        transition: 0.1s;
+        opacity: 0;
+    }
+}
+.tarefa:hover{
+    & .tempo-restante{
+        opacity: 1;
+    }
+}
+
+.editBtn > ion-icon{
+    color: rgb(0, 0, 20);
+}
+
+.deleteBtn > ion-icon{
+    color: rgb(182, 14, 14);
+}
+
+.btn, .btn-danger, .btn-success{
+    font-size: 1em;
+    padding: 0.2em;
+}
