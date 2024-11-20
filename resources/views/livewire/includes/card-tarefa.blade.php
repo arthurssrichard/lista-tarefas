@@ -25,7 +25,7 @@
             @if($tarefa->ordem_apresentacao > 1)
             <button class="toggle-order toggle-order-active" wire:click="cardUp({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @else
-            <button class="toggle-order"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
+            <button class="toggle-order" style="cursor: default;"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @endif
             @if($tarefa->ordem_apresentacao < $tarefas->max('ordem_apresentacao'))
             <button class="toggle-order toggle-order-active" wire:click="cardDown({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-down-outline"></ion-icon></button>
