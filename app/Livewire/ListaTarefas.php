@@ -75,7 +75,7 @@ class ListaTarefas extends Component
      * @return void
      */
     public function edit($tarefaId){ // $tarefaId passado via wire:key na div mãe de cada compontente card-tarefa
-        $this->cancelEdit();
+        
         // Instancia o atributo de id da tarefa sendo editada no compontente com o valor 'ID' da tarefa
         $this->editingTarefaId = $tarefaId;
         $editingTarefa = Tarefa::findOrFail($tarefaId); // Resgata a tarefa do banco de dados
@@ -126,9 +126,9 @@ class ListaTarefas extends Component
     public function cancelEdit(){
         $this->resetErrorBag();
         $this->reset([
-            'nome',
-            'custo',
-            'dataLimite',
+            'editNome',
+            'editCusto',
+            'editDataLimite',
             'editingTarefaId'
         ]);
     }
