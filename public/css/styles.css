@@ -96,7 +96,7 @@
 
 /* UL */
 .ul-tarefas{
-    height: 500px; 
+    max-height: 500px; 
     overflow-y: auto; 
     box-shadow: 0px -10px 10px inset rgba(0,0,0,7%)"
 }
