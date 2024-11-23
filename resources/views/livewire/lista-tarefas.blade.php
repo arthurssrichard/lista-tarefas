@@ -24,5 +24,5 @@
         @endforeach
     </ul>
     @include('livewire/includes/adicionar-tarefa')
-    <small>Desenvolvido por <a href="https://github.com/arthurssrichard">Arthur Richard</a> • <a href="https://github.com/arthurssrichard/lista-tarefas/tree/no-docker">Repositório GitHub</a></small>
+    <small>Desenvolvido por <a href="https://github.com/arthurssrichard">Arthur Richard</a> • <a href="https://github.com/arthurssrichard/lista-tarefas/tree/modified">Repositório GitHub</a></small>
 </section>
