@@ -14,6 +14,8 @@ de programação, organização de código e uma boa documentação.
 
 Esse projeto teve seu *deploy* feito na plataforma Railway, e pode ser acessado **[neste link](https://lista-tarefas-production-c064.up.railway.app/)**
 
+Foi feita uma segunda versão com uma modificação adicional para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
+
 ## Arquivos importantes
 
 Os arquivos principais desse código são:
@@ -29,6 +31,7 @@ Outros arquivos envolvidos:
 
 - [create_tarefas_table.php (Migration que gera a tabela)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/database/migrations/2024_11_17_154030_create_tarefas_table.php)
 - [web.php (Arquivo de rotas)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/routes/web.php)
+- [styles.css (Estilos)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/public/css/styles.css)
 
 ## Funcionamento de um componente
 
@@ -173,3 +176,5 @@ Exemplo, se hoje é dia 23/11, e a data limite da tarefa é 30/11, ao lado da da
 - O elemento HTML **[card-tarefa](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)** foi adaptado para preencher a tela, caso o usuário esteja acessando via dispositivo móvel.
 
 - As datas são convertidas para o formado dd/mm/yyyy, que é o padrão no Brasil.
+
+- Foi feita uma segunda versão para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
