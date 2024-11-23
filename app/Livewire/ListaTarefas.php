@@ -16,7 +16,6 @@ use Exception;
  * acionaria o método "create" nesta classe.
  * 
  * Assim também, o atributo "nome" desse componente pode ter seu valor vinculado a um elemento HTML. Ex: <input type="text" wire:model="nome">
- * A view associada a este componente é: [resources/views/livewire/lista-tarefas.blade.php](../../resources/views/livewire/lista-tarefas.blade.php)
  * 
  * @return void
  */
@@ -37,7 +36,7 @@ class ListaTarefas extends Component
 
     /**
      * Recebe os dados do form, valida e adiciona no banco de dados para uma nova tarefa
-     * Chamado via wire:click="create" em [resources/views/livewire/includes/adicionar-tarefa.blade.php](../../resources/views/livewire/includes/adicionar-tarefa.blade.php)
+     * Chamado via wire:click="create" em "adicionar-tarefa.blade.php"
      * 
      * @return void
      */
@@ -70,7 +69,7 @@ class ListaTarefas extends Component
 
     /**
      * Recebe id de uma tarefa, resgata os dados via ID no banco dedados e habilita o card para edição dos atributos 
-     * Chamado via wire:click="edit" em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+     * Chamado via wire:click="edit" em "card-tarefa.blade.php"
      * 
      * @return void
      */
@@ -81,7 +80,7 @@ class ListaTarefas extends Component
         $editingTarefa = Tarefa::findOrFail($tarefaId); // Resgata a tarefa do banco de dados
 
         // Atribui os valores dos atributos de edição deste componente para os valores da tarefa encontrada no banco de dados via ID
-        // Os atributos estão vinculados via wire:model aos inputs HTML de cada card-tarefa em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+        // Os atributos estão vinculados via wire:model aos inputs HTML de cada card-tarefa em "card-tarefa.blade.php"
         $this->editNome = $editingTarefa->nome;
         $this->editCusto = $editingTarefa->custo;
         $this->editDataLimite = $editingTarefa->data_limite;
@@ -92,7 +91,7 @@ class ListaTarefas extends Component
 
     /**
      * Valida os dados inseridos nos campos de edição, e atualiza no banco de dados
-     * Chamado via wire:click="update" em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+     * Chamado via wire:click="update" em "card-tarefa.blade.php"
      * 
      * @return void 
      */
@@ -138,7 +137,7 @@ class ListaTarefas extends Component
 
     /**
      * Delete uma tarefa pelo id resgatado
-     * Chamado via wire:click em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+     * Chamado via wire:click="delete($tarefa->id)" em "card-tarefa.blade.php"
      * 
      * @return void 
      */
@@ -157,7 +156,7 @@ class ListaTarefas extends Component
 
     /**
      * Move uma tarefa para cima
-     * Chamado via wire:click="cardUp" em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+     * Chamado via wire:click="cardUp" em "card-tarefa.blade.php"
      * @return void 
      */
     public function cardUp($tarefaId){
@@ -184,7 +183,7 @@ class ListaTarefas extends Component
 
     /**
      * Move uma tarefa para baixo
-     * Chamado via wire:click="cardDown" em [resources/views/livewire/includes/card-tarefa.blade.php](../../resources/views/livewire/includes/card-tarefa.blade.php)
+     * Chamado via wire:click="cardDown" em "card-tarefa.blade.php"
      * @return void 
      */
     public function cardDown($tarefaId){
@@ -276,8 +275,7 @@ class ListaTarefas extends Component
 
 
     /**
-     * Renderiza o componente Livewire, retornando a view associada a ele, nesse caso sendo:
-     * [resources/views/livewire/lista-tarefas.blade.php](../../resources/views/livewire/lista-tarefas.blade.php)
+     * Renderiza o componente Livewire, retornando a view associada a ele, nesse caso sendo: "lista-tarefas.blade.php"
      * 
      * @return void
      */

@@ -112,7 +112,7 @@ Ao final da lista, há uma seção para "Incluir" um novo registro, localizada n
 
 ### Excluir
 
-**[Na view](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.phpL59)**, o usuário pode excluir uma tarefa clicando no *botão* com ícone de lixeira, ao lado direito da tarefa, acionando o método *delete* **[no componente](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L145)**, que após a confirmação do usuário, busca a tarefa no banco de dados via seu ID, e remove a mesma.
+**[Na view](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L59)**, o usuário pode excluir uma tarefa clicando no *botão* com ícone de lixeira, ao lado direito da tarefa, acionando o método *delete* **[no componente](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L145)**, que após a confirmação do usuário, busca a tarefa no banco de dados via seu ID, e remove a mesma.
 
 ### Editar
 
@@ -120,10 +120,10 @@ Ao final da lista, há uma seção para "Incluir" um novo registro, localizada n
 
 Assim que o usuário terminar de modificar o que deseja basta clicar no botão *atualizar* ou *cancelar*.
 
-O botão *atualizar* aciona o método **[update](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#99)**,
+O botão *atualizar* aciona o método **[update](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L99)**,
 que pega os valores inseridos nos campos, e atualiza a tarefa no banco de dados.
 
-O botão *cancelar* aciona o método **[cancelEdit](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#126)**, que para a edição, e deixa o card da tarefa da mesma forma que antes.
+O botão *cancelar* aciona o método **[cancelEdit](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L126)**, que para a edição, e deixa o card da tarefa da mesma forma que antes.
 
 ### Incluir
 
