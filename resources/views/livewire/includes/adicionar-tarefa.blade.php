@@ -1,4 +1,4 @@
-<div class="col-10 bg-light p-3 border border-dark rounded" style="min-height: 19em;">
+<div class="col-12 bg-light p-3 border border-dark rounded" style="min-height: 19em;">
     <h2>Incluir nova tarefa</h2>
     <form>
         <div>
