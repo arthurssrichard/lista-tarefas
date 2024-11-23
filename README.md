@@ -1,8 +1,6 @@
 # Projeto Lista de tarefas
 
-Este é um projeto de lista de tarefas, desenvolvido na linguagem PHP,
-utilizando o framework web Laravel, e o framework Livewire, para a criação de
-componentes interativos que interagem com o back-end sem a necessidade de atualização de página.
+Este é um projeto de lista de tarefas, desenvolvido na linguagem PHP, utilizando o framework web Laravel, e o framework Livewire, para a criação de componentes interativos que interagem com o back-end sem a necessidade de atualização de página. Para a persistência dos dados, foi utilizado o banco de dados MySQL.
 
 O projeto foi desenvolvido buscando ser de fácil interação para o usuário, 
 com ícones e práticas de design (UI/UX) que facilitam o uso da aplicação.
