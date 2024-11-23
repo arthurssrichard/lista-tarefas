@@ -18,7 +18,7 @@
     @endif
     
     <h2>Minhas Tarefas</h2>
-    <ul class="col-12" wire:sortable="updateOrder" wire:sortable.options="{ animation: 300 }" style="height: 500px; overflow-y: auto; box-shadow: 0px -10px 10px inset rgba(0,0,0,7%)">
+    <ul class="col-12 ul-tarefas" wire:sortable="updateOrder" wire:sortable.options="{ animation: 300 }">
         @foreach($tarefas as $tarefa)
         @include('livewire/includes/card-tarefa')
         @endforeach
