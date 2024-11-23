@@ -5,7 +5,6 @@
             <strong><ion-icon name="warning-outline"></ion-icon> Erro!</strong>
             <p>{{ session('error') }}</p>
         </div>
-        <!-- Botão de fechar a alerta -->
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
@@ -17,6 +16,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
+    
     <h2>Minhas Tarefas</h2>
     <ul class="col-12" wire:sortable="updateOrder" wire:sortable.options="{ animation: 300 }">
         @foreach($tarefas as $tarefa)
@@ -24,4 +24,5 @@
         @endforeach
     </ul>
     @include('livewire/includes/adicionar-tarefa')
+    <small>Desenvolvido por <a href="https://github.com/arthurssrichard">Arthur Richard</a> • <a href="https://github.com/arthurssrichard/lista-tarefas/tree/no-docker">Repositório GitHub</a></small>
 </section>

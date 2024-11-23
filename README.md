@@ -1,66 +1,175 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto Lista de tarefas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um projeto de lista de tarefas, desenvolvido na linguagem PHP,
+utilizando o framework web Laravel, e o framework Livewire, para a criação de
+componentes interativos que interagem com o backend sem a necessidade de atualização de página.
 
-## About Laravel
+O projeto foi desenvolvido buscando ser de fácil interação para o usuário, 
+com ícones e práticas de design (UI/UX) que facilitam o uso da aplicação.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Ao mesmo tempo, também foi feito pensando em ter um código limpo, com boas práticas
+de programação, organização de código e uma boa documentação.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Acessar aplicação
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Esse projeto teve seu *deploy* feito na plataforma Railway, e pode ser acessado **[neste link](https://lista-tarefas-production-c064.up.railway.app/)**
 
-## Learning Laravel
+## Arquivos importantes
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Os arquivos principais desse código são:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- [Tarefa.php (Model Tarefa)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Models/Tarefa.php).
+- [ListaTarefas.php (Classe do componente)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php).
+- [lista.blade.php (Página inicial)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/lista.blade.php).
+- [lista-tarefas.blade.php (View do componente)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/lista-tarefas.blade.php).
+- [adicionar-tarefa.blade.php (Incluído pela view lista-tarefas)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php).
+- [card-tarefa.blade.php (Incluído pela view lista-tarefas)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Outros arquivos envolvidos:
 
-## Laravel Sponsors
+- [create_tarefas_table.php (Migration que gera a tabela)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/database/migrations/2024_11_17_154030_create_tarefas_table.php)
+- [web.php (Arquivo de rotas)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/routes/web.php)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Funcionamento de um componente
 
-### Premium Partners
+Os mecanismos principais das tarefas ocorrem por meio do compontente ListaTarefas,
+que consiste de 2 arquivos:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### lista-tarefas.blade.php
 
-## Contributing
+É a view blade, que contém a interface HTML do componente ListaTarefas, e os elementos
+necessarios para realizar ações do componente, como criar, editar, excluir e reordenar tarefas.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### ListaTarefas.php
 
-## Code of Conduct
+É o arquivo que gerencia a lógica do componente, recebendo dados e realizando métodos. O componente permite a atualização em tempo real, enviando as atualizações para o front-end sem a necessidade de atualizar a página, de forma dinâmica e eficiente, tanto para o código como a experiência do usuário.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Esses arquivos se comunicam por meio dos métodos e atributos, que são ligados por meio
+de atributos HTML wire nas páginas.
 
-## Security Vulnerabilities
+#### Exemplo:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Um input no HTML pode ser ligado a um atributo "nome" do componente da seguinte forma:
 
-## License
+##### lista-tarefas.blade.php (View)
+> \<input type="text" wire:model="nome">
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+E um botão, ligado a um método:
+
+> \<button wire="pesquisar">Pesquisar nome\</button>
+
+No backend, a lógica ficaria assim:
+
+##### ListaTarefas.php
+> class ListaNomes extends component{
+>    
+> public $nome; // Ligado ao input com *wire:model="nome"*
+> 
+> public function pesquisar(){ // Chamado pelo botão com *wire="pesquisar"*
+>
+>   $nomePesquisado = $this->nome;
+>
+>   $usuarios[] = User::latest()->where('nome','like',"%{$nomePesquisado}%");
+>
+>    }
+> 
+> }
+>
+
+## Processo seletivo FATTO
+
+Esse projeto foi desenvolvido como um teste para o processo seletivo de estágio da FATTO Consultorias e Software. Seguem os tópicos solicitados no e-mail do processo seletivo, e como cada um foi cumprido:
+
+### Base de dados - Tabela: Tarefas
+
+A tabela foi gerada em uma das migrations do Laravel, que foi executada no deploy do projeto com o comando **php artisan migrate**. A tabela 'tarefas' foi gerada no banco de dados com a migration, tendo as colunas:
+
+- id (Identificador da tarefa)
+- nome (Nome da tarefa)
+- custo (Custo (R$))
+- data_limite (Data limite)
+- ordem_apresentacao (Ordem de apresentação)
+
+Também existem colunas padrão de data de criação e última data de edição
+
+- created_at
+- updated_at
+
+### Lista de tarefas
+
+A página principal do sistema, é roteada no arquivo de rotas: [web.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/routes/web.php).
+
+As tarefas são apresentadas uma abaixo da outra em forma de cards, ordenadas pela coluna 'ordem_apresentação'. A ordenação é feita no método **[render](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L284)**, no componente ListaTarefas.php.
+
+A tarefa com custo maior que R$ 1.000,00 tem o fundo amarelo, diferente das demais. Esse mecanismo é feito com o blade (template engine), no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)**, na linha 2.
+
+Os botões com as funções de "Editar" e "Excluir" estão no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L54)**.
+
+Ao final da lista, existe uma seção para "Incluir" um novo registro, ela se encontra no arquivo **[adicionar-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php)**.
+
+### Excluir
+
+**[Na view](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.phpL59)**, o usuário pode excluir uma tarefa clicando no *botão* com ícone de lixeira, ao lado direito da tarefa, acionando o método *delete* **[no componente](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L145)**, que após a confirmação do usuário, busca a tarefa no banco de dados via seu ID, e remove a mesma.
+
+### Editar
+
+**[Na view](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L55)**, o usuário pode editar uma tarefa clicando no *botão* com ícone de lápis, ao lado direito da tarefa, acionando o método *edit* **[no componente](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L77)**, que habilita a tarefa selecionada para edição, transformando os valores que antes eram textos, em inputs, para que o usuário modifique cada valor na própria tarefa.
+
+Assim que o usuário terminar de modificar o que deseja basta clicar no botão *atualizar* ou *cancelar*.
+
+O botão *atualizar*, aciona o método **[update](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#99)**,
+que pega os valores inseridos nos campos, e atualiza a tarefa no banco de dados.
+
+O botão *cancelar*, aciona o método **[cancelEdit](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#126)**, que para a edição, e deixa o card da tarefa da mesma forma que antes.
+
+### Incluir
+
+**[Na view](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php)**, o usuário pode incluir uma tarefa preenchendo o formulário de nova tarefa, e após isso clicar no botão *[incluir tarefa](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php#L28)*, acionando o método *create* **[no componente](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L44)**, criando um novo objeto Tarefa, e salvando o mesmo no banco de dados.
+
+### Reordenação de tarefas
+
+Foram implementadas as duas formas de reordenação sugeridas.
+
+1) O usuário pode arrastar uma tarefa clicando no **[ícone](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L34)** no canto superior direito do card, e arrastar a tarefa para onde desejar. Com o uso do plugin Livewire SortableJs, uma tarefa pode ser arrastada, e um array com a ordem atualizada dos componentes é enviada para o método **[updateOrder](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L216)**, que reorganiza as tarefas com base no array fornecido.
+
+2) O usuário pode clicar nos **[ícones](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L38)** no canto direito do card, para movimentar a tarefa para baixo ou para cima. Se a tarefa for a primeira da lista, o botão de mover para cima terá uma cor mais clara e não funcionará, e o mesmo se aplica ao botão de baixo, se a tarefa for a última da lista. Os botões tem um método para cada um no componente, sendo eles **"[cardUp](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L163)"** e **"[cardDown](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L190)"**.
+
+## Requisitos não funcionais
+
+## Validação
+
+Todos os atributos preenchidos em campos de formulário são validados antes de serem processados e utilizados em algum método, tanto nos campos de criação quanto edição de tarefas.
+
+### Nome
+
+- É obrigatório
+- Deve ser único
+- Deve ter no mínimo 2 letras, e no máximo 50
+
+### Custo
+
+- É obrigatório
+- Deve ser um valor numérico
+- Deve ser maior ou igual a 0
+
+### Data Limite
+
+- É obrigatório
+- Deve ser uma data
+- Deve ser uma data posterior à data em que o usuário estiver criando o sistema
+
+
+**Caso algum dos requisitos de um dos atributos não for válido, a tarefa não será criada/edita e um aviso explicando o valor inválido aparecerá abaixo de cada campo necessário**
+
+## Usabilidade
+
+As cores, tamanhos de fontes e contrastes definidos foram feitos de forma que fizesse o uso da aplicação ser intuitivo e fácil.
+
+- Ao clicar em editar um arquivo, os campos de edição aparecem com o mesmo **tamanho de texto** e **posição** de onde cada atributo da tarefa estava, de forma que o usuário não tenha o trabalho de pensar onde procurar os campos de edição.
+
+- Ao passar o mouse por cima de cada tarefa, um texto menos destacado aparecerá ao lado da data, esse texto mostra quanto tempo falta para a data limite de cada tarefa chegar.
+Exemplo, se hoje é dia 23/11, e a data limite da tarefa é 30/11, ao lado da data limite aparecerá a mensagem "em 6 dias", afim de mostrar de forma mais compreensível o tempo restante para o cumprimento da tarefa.
+
+- O elemento HTML **[card-tarefa](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)** foi adaptado para preencher a tela, caso o usuário esteja acessando via dispositivo móvel.
+
+- As datas são convertidas para o formado dd/mm/yyyy, que é o padrão no Brasil.

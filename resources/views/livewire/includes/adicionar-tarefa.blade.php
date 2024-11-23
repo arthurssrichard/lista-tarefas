@@ -24,7 +24,7 @@
                 @enderror
             </div>
         </div>
-        @if(!$editingTarefaId)
+        @if(!$editingTarefaId) {{-- Desabilita os botão caso alguma tarefa esteja em edição (editingTarefaId setado) --}}
             <button type="submit" wire:click.prevent="create()" class="btn btn-success p-1" readonly>Incluir</button>
         @endif
     </form>

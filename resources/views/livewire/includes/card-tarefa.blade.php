@@ -28,16 +28,19 @@
             <p class="card-data mb-1 data">{{$tarefa->dataLimiteFormatada}} <span class="card-data mb-1 tempo-restante text-muted">{{$tarefa->diasRestantes}}</span></p>
             @endif
         </div>
-        @if(!$this->editingTarefaId)
+
+        @if(!$this->editingTarefaId) {{-- Desabilita os botões caso alguma tarefa esteja em edição (editingTarefaId setado) --}}
         <div class="col-1 d-flex flex-column justify-content-around">
             <button class="drag-card"><ion-icon title="Arrastar" wire:ignore wire:sortable.handle name="menu-outline"></ion-icon></button>
 
+            {{-- Verificações para desabilitar mover o card para cima caso seja o primeiro --}}
             @if($tarefa->ordem_apresentacao != $tarefas->min('ordem_apresentacao'))
             <button class="toggle-order toggle-order-active" wire:click="cardUp({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @else
             <button class="toggle-order" style="cursor: default;"><ion-icon wire:ignore name="chevron-up-outline"></ion-icon></button>
             @endif
 
+            {{-- Verificações para desabilitar mover o card para baixo caso seja o último --}}
             @if($tarefa->ordem_apresentacao != $tarefas->max('ordem_apresentacao'))
             <button class="toggle-order toggle-order-active" wire:click="cardDown({{$tarefa->id}})"><ion-icon wire:ignore name="chevron-down-outline"></ion-icon></button>
             @else
@@ -47,12 +50,13 @@
         </div>
         @endif
     </div>
+
     <div class="col-1 d-flex flex-column utils">
-        <button class="editBtn" wire:click="edit({{$tarefa->id}})">
+        <button class="editBtn" wire:click="edit({{$tarefa->id}})"> {{-- Chama o método edit no componente, passando o id da tarefa para habilitar edição --}}
             <ion-icon wire:ignore title="Editar registro" name="create-outline"></ion-icon>
         </button>
 
-        <button class="deleteBtn" wire:click="delete({{$tarefa->id}})" wire:confirm="Tem certeza que quer excluir essa tarefa?">
+        <button class="deleteBtn" wire:click="delete({{$tarefa->id}})" wire:confirm="Tem certeza que quer excluir essa tarefa?"> {{-- Chama o método delete no componente, passando o id da tarefa a ser deletada --}}
             <ion-icon wire:ignore title="Apagar registro" name="trash-outline"></ion-icon>
         </button>
     </div>
