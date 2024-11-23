@@ -14,11 +14,11 @@ de programação, organização de código e uma boa documentação.
 
 Esse projeto teve seu *deploy* feito na plataforma Railway, e pode ser acessado **[neste link](https://lista-tarefas-production-c064.up.railway.app/)**
 
-Foi feita uma segunda versão com uma modificação adicional para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
+Foi desenvolvida uma segunda versão com uma modificação adicional para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
 
 ## Arquivos importantes
 
-Os arquivos principais desse código são:
+Os arquivos principais deste código são:
 
 - [Tarefa.php (Model Tarefa)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Models/Tarefa.php).
 - [ListaTarefas.php (Classe do componente)](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php).
@@ -85,7 +85,7 @@ Esse projeto foi desenvolvido como um teste para o processo seletivo de estágio
 
 ### Base de dados - Tabela: Tarefas
 
-A tabela foi gerada em uma das migrations do Laravel, que foi executada no deploy do projeto com o comando **php artisan migrate**. A tabela 'tarefas' foi gerada no banco de dados com a migration, tendo as colunas:
+A tabela foi gerada em uma das migrations do Laravel, que foi executada na implantação do projeto com o comando **php artisan migrate**. A tabela 'tarefas' foi gerada no banco de dados com a migration, tendo as colunas:
 
 - id (Identificador da tarefa)
 - nome (Nome da tarefa)
@@ -104,11 +104,11 @@ A página principal do sistema, é roteada no arquivo de rotas: [web.php](https:
 
 As tarefas são apresentadas uma abaixo da outra em forma de cards, ordenadas pela coluna 'ordem_apresentação'. A ordenação é feita no método **[render](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L284)**, no componente ListaTarefas.php.
 
-A tarefa com custo maior que R$ 1.000,00 tem o fundo amarelo, diferente das demais. Esse mecanismo é feito com o blade (template engine), no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)**, na linha 2.
+A tarefa com custo maior que R$ 1.000,00 tem o fundo amarelo, destacando-se das demais. Esse mecanismo é feito com o blade (template engine), no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)**, na linha 2.
 
 Os botões com as funções de "Editar" e "Excluir" estão no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L54)**.
 
-Ao final da lista, existe uma seção para "Incluir" um novo registro, ela se encontra no arquivo **[adicionar-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php)**.
+Ao final da lista, há uma seção para "Incluir" um novo registro, localizada no arquivo **[adicionar-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/adicionar-tarefa.blade.php)**.
 
 ### Excluir
 
@@ -120,10 +120,10 @@ Ao final da lista, existe uma seção para "Incluir" um novo registro, ela se en
 
 Assim que o usuário terminar de modificar o que deseja basta clicar no botão *atualizar* ou *cancelar*.
 
-O botão *atualizar*, aciona o método **[update](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#99)**,
+O botão *atualizar* aciona o método **[update](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#99)**,
 que pega os valores inseridos nos campos, e atualiza a tarefa no banco de dados.
 
-O botão *cancelar*, aciona o método **[cancelEdit](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#126)**, que para a edição, e deixa o card da tarefa da mesma forma que antes.
+O botão *cancelar* aciona o método **[cancelEdit](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#126)**, que para a edição, e deixa o card da tarefa da mesma forma que antes.
 
 ### Incluir
 
@@ -133,7 +133,7 @@ O botão *cancelar*, aciona o método **[cancelEdit](https://github.com/arthurss
 
 Foram implementadas as duas formas de reordenação sugeridas.
 
-1) O usuário pode arrastar uma tarefa clicando no **[ícone](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L34)** no canto superior direito do card, e arrastar a tarefa para onde desejar. Com o uso do plugin Livewire SortableJs, uma tarefa pode ser arrastada, e um array com a ordem atualizada dos componentes é enviada para o método **[updateOrder](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L216)**, que reorganiza as tarefas com base no array fornecido.
+1) O usuário pode arrastar uma tarefa clicando no **[ícone](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L34)** no canto superior direito do card, e arrastar a tarefa para onde desejar. Com o uso do plugin Livewire SortableJs, uma tarefa pode ser arrastada, e um array com a ordem atualizada dos componentes é enviado para o método **[updateOrder](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L216)**, que reorganiza as tarefas com base no array fornecido.
 
 2) O usuário pode clicar nos **[ícones](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L38)** no canto direito do card, para movimentar a tarefa para baixo ou para cima. Se a tarefa for a primeira da lista, o botão de mover para cima terá uma cor mais clara e não funcionará, e o mesmo se aplica ao botão de baixo, se a tarefa for a última da lista. Os botões tem um método para cada um no componente, sendo eles **"[cardUp](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L163)"** e **"[cardDown](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L190)"**.
 
@@ -175,6 +175,6 @@ Exemplo, se hoje é dia 23/11, e a data limite da tarefa é 30/11, ao lado da da
 
 - O elemento HTML **[card-tarefa](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)** foi adaptado para preencher a tela, caso o usuário esteja acessando via dispositivo móvel.
 
-- As datas são convertidas para o formado dd/mm/yyyy, que é o padrão no Brasil.
+- As datas são convertidas para o formato dd/mm/yyyy, que é o padrão no Brasil.
 
-- Foi feita uma segunda versão para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
+- Foi desenvolvida uma segunda versão do projeto, com um container limitado e rolagem interna, para que o usuário não precise rolar toda a tela para adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
