@@ -2,19 +2,18 @@
 
 Este é um projeto de lista de tarefas, desenvolvido na linguagem PHP,
 utilizando o framework web Laravel, e o framework Livewire, para a criação de
-componentes interativos que interagem com o backend sem a necessidade de atualização de página.
+componentes interativos que interagem com o back-end sem a necessidade de atualização de página.
 
 O projeto foi desenvolvido buscando ser de fácil interação para o usuário, 
 com ícones e práticas de design (UI/UX) que facilitam o uso da aplicação.
 
-Ao mesmo tempo, também foi feito pensando em ter um código limpo, com boas práticas
-de programação, organização de código e uma boa documentação.
+Foi também pensado em ter um código limpo, com boas práticas de programação, organização no código e na documentação.
 
 ## Acessar aplicação
 
 Esse projeto teve seu *deploy* feito na plataforma Railway, e pode ser acessado **[neste link](https://lista-tarefas-production-c064.up.railway.app/)**
 
-Foi desenvolvida uma segunda versão com uma modificação adicional para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precise descer a tela da lista toda caso queira adicionar uma nova tarefa, essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
+Foi desenvolvido, como sugestão, uma segunda versão com uma modificação adicional para esse projeto, com um container limitado com rolagem interna, de forma que o usuário não precisa descer toda a tela da lista toda caso queira adicionar uma nova tarefa. Essa versão pode ser acessada [aqui](https://lista-tarefas-copy-production.up.railway.app).
 
 ## Arquivos importantes
 
@@ -40,15 +39,13 @@ que consiste de 2 arquivos:
 
 ### lista-tarefas.blade.php
 
-É a view blade, que contém a interface HTML do componente ListaTarefas, e os elementos
-necessarios para realizar ações do componente, como criar, editar, excluir e reordenar tarefas.
+É a view blade que contém a interface HTML do componente ListaTarefas, e os elementos necessários para realizar ações do componente, como criar, editar, excluir e reordenar tarefas.
 
 ### ListaTarefas.php
 
-É o arquivo que gerencia a lógica do componente, recebendo dados e realizando métodos. O componente permite a atualização em tempo real, enviando as atualizações para o front-end sem a necessidade de atualizar a página, de forma dinâmica e eficiente, tanto para o código como a experiência do usuário.
+É o arquivo que gerencia a lógica do componente, recebendo dados e realizando métodos. O componente permite a atualização em tempo real, enviando as atualizações para o front-end sem a necessidade de atualizar a página, de forma dinâmica e eficiente, tanto para o código quanto para a experiência do usuário.
 
-Esses arquivos se comunicam por meio dos métodos e atributos, que são ligados por meio
-de atributos HTML wire nas páginas.
+Esses arquivos se comunicam por meio dos métodos e atributos, que são ligados por meio de atributos HTML "wire" nas páginas.
 
 #### Exemplo:
 
@@ -61,7 +58,7 @@ E um botão, ligado a um método:
 
 > \<button wire="pesquisar">Pesquisar nome\</button>
 
-No backend, a lógica ficaria assim:
+No back-end, a lógica ficaria assim:
 
 ##### ListaTarefas.php
 > class ListaNomes extends component{
@@ -104,7 +101,7 @@ A página principal do sistema, é roteada no arquivo de rotas: [web.php](https:
 
 As tarefas são apresentadas uma abaixo da outra em forma de cards, ordenadas pela coluna 'ordem_apresentação'. A ordenação é feita no método **[render](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/app/Livewire/ListaTarefas.php#L284)**, no componente ListaTarefas.php.
 
-A tarefa com custo maior que R$ 1.000,00 tem o fundo amarelo, destacando-se das demais. Esse mecanismo é feito com o blade (template engine), no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)**, na linha 2.
+A tarefa com custo maior ou igual a R$ 1.000,00 tem o fundo amarelo, destacando-se das demais. Esse mecanismo é feito com o blade (template engine), no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)**, na linha 2.
 
 Os botões com as funções de "Editar" e "Excluir" estão no arquivo **[card-tarefa.blade.php](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php#L54)**.
 
@@ -171,7 +168,7 @@ As cores, tamanhos de fontes e contrastes definidos foram feitos de forma que fi
 - Ao clicar em editar um arquivo, os campos de edição aparecem com o mesmo **tamanho de texto** e **posição** de onde cada atributo da tarefa estava, de forma que o usuário não tenha o trabalho de pensar onde procurar os campos de edição.
 
 - Ao passar o mouse por cima de cada tarefa, um texto menos destacado aparecerá ao lado da data, esse texto mostra quanto tempo falta para a data limite de cada tarefa chegar.
-Exemplo, se hoje é dia 23/11, e a data limite da tarefa é 30/11, ao lado da data limite aparecerá a mensagem "em 6 dias", afim de mostrar de forma mais compreensível o tempo restante para o cumprimento da tarefa.
+Exemplo: Se hoje é dia 23/11, e a data limite da tarefa é 30/11, ao lado da data limite aparecerá a mensagem "em 6 dias", afim de mostrar de forma mais compreensível o tempo restante para o cumprimento da tarefa.
 
 - O elemento HTML **[card-tarefa](https://github.com/arthurssrichard/lista-tarefas/tree/no-docker/resources/views/livewire/includes/card-tarefa.blade.php)** foi adaptado para preencher a tela, caso o usuário esteja acessando via dispositivo móvel.
 

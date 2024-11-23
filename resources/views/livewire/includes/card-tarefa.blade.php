@@ -1,5 +1,5 @@
 <li class="tarefa" wire:key="{{$tarefa->id}}" wire:sortable.item="{{$tarefa->id}}">
-    <div class="tarefa-card col-11 d-flex justify-content-between {{$tarefa->custo > 1000 ? 'bg-warning':''}}">{{-- preenchimento do card --}}
+    <div class="tarefa-card col-11 d-flex justify-content-between {{$tarefa->custo >= 1000 ? 'bg-warning':''}}">{{-- preenchimento do card --}}
         <div class="col-8">
             @if($this->editingTarefaId == $tarefa->id)
             <div class="form-container mb-1">
